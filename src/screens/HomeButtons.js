@@ -87,11 +87,11 @@ const HomeButtons = ({ navigation }) => {
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
-            navigation.navigate("TextScreen");
+            navigation.navigate("EditServices");
           }}
         >
           <Text style={{ color: "white", fontSize: 16, textAlign: "center" }}>
-            Text & TextInput
+            Edit Services
           </Text>
         </TouchableOpacity>
       </View>

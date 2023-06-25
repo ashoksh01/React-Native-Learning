@@ -8,6 +8,7 @@ import TextFieldAndInput from "../screens/TextFieldAndInput";
 import TouchComponent from "../screens/TouchComponent";
 import ToDo from "../screens/ToDo";
 import FlatListScreenPAGE from "../screens/FlatListScreenPAGE";
+import EditServiceScreen from "../screens/EditServiceScreen";
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -45,7 +46,13 @@ const AppStack = () => {
         component={FlatListScreenPAGE}
         options={{ headerShown: true }}
       />
+      <Stack.Screen
+        name="EditServices"
+        component={EditServiceScreen}
+        options={{ headerShown: true }}
+      />
     </Stack.Navigator>
+    
   );
 };
 
