@@ -1,82 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
 
 const EditServiceScreen = () => {
-  const [serviceName, setServiceName] = useState('');
-  const [currency, setCurrency] = useState('');
-  const [status, setStatus] = useState('');
-  const [duration, setDuration] = useState('');
-  const [price, setPrice] = useState('');
-  const [cancellationFee, setCancellationFee] = useState('');
-  const [description, setDescription] = useState('');
+  const { control, handleSubmit } = useForm();
 
-  const handleEdit = () => {
-    // Handle the edit functionality
-  };
-
-  const handleCancel = () => {
-    // Handle the cancel functionality
+  const onSubmit = (data) => {
+    // Handle form submission
+    console.log(data);
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Edit Service</Text>
 
-      <Text style={styles.label}>Service Name</Text>
-      <TextInput
-        style={styles.input}
-        value={serviceName}
-        onChangeText={setServiceName}
+      <Controller
+        control={control}
+        render={({ field: { onChange, value } }) => (
+          <View>
+            <Text style={styles.label}>Service Name</Text>
+            <TextInput
+              style={styles.input}
+              value={value}
+              onChangeText={onChange}
+            />
+          </View>
+        )}
+        name="serviceName"
+        defaultValue=""
       />
 
-      <Text style={styles.label}>Currency</Text>
-      <TextInput
-        style={styles.input}
-        value={currency}
-        onChangeText={setCurrency}
-      />
-
-      <Text style={styles.label}>Status</Text>
-      <TextInput
-        style={styles.input}
-        value={status}
-        onChangeText={setStatus}
-      />
-
-      <Text style={styles.label}>Duration</Text>
-      <TextInput
-        style={styles.input}
-        value={duration}
-        onChangeText={setDuration}
-      />
-
-      <Text style={styles.label}>Price</Text>
-      <TextInput
-        style={styles.input}
-        value={price}
-        onChangeText={setPrice}
-      />
-
-      <Text style={styles.label}>Cancellation Fee</Text>
-      <TextInput
-        style={styles.input}
-        value={cancellationFee}
-        onChangeText={setCancellationFee}
-      />
-
-      <Text style={styles.label}>Description</Text>
-      <TextInput
-        style={styles.input}
-        value={description}
-        onChangeText={setDescription}
-        multiline
-      />
+      {/* Render other fields using Controller component */}
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
+        <TouchableOpacity
+          style={styles.editButton}
+          onPress={handleSubmit(onSubmit)}
+        >
           <Text style={styles.buttonText}>Edit</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+        <TouchableOpacity style={styles.cancelButton}>
           <Text style={styles.buttonText}>Cancel</Text>
         </TouchableOpacity>
       </View>
@@ -84,7 +47,7 @@ const EditServiceScreen = () => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
@@ -127,6 +90,6 @@ const styles = {
     color: 'white',
     fontWeight: 'bold',
   },
-};
+});
 
 export default EditServiceScreen;
