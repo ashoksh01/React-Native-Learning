@@ -105,11 +105,11 @@ const HomeButtons = ({ navigation }) => {
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
-            navigation.navigate("List");
+            navigation.navigate("serv");
           }}
         >
           <Text style={{ color: "white", fontSize: 16, textAlign: "center" }}>
-            List & Scrollview
+           Service
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

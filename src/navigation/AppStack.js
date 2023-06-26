@@ -9,6 +9,7 @@ import TouchComponent from "../screens/TouchComponent";
 import ToDo from "../screens/ToDo";
 import FlatListScreenPAGE from "../screens/FlatListScreenPAGE";
 import EditServiceScreen from "../screens/EditServiceScreen";
+import Services from "../screens/Services";
 
 const Stack = createNativeStackNavigator();
 const AppStack = () => {
@@ -49,6 +50,11 @@ const AppStack = () => {
       <Stack.Screen
         name="EditServices"
         component={EditServiceScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="serv"
+        component={Services}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>
