@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, TextInput, Button, Alert } from "react-native";
+import { Text, View, TextInput, Button, Alert, StyleSheet } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
 export default function Services() {
@@ -11,7 +11,7 @@ export default function Services() {
   const onSubmit = data => console.log(data);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Controller
         control={control}
         rules={{
@@ -19,6 +19,7 @@ export default function Services() {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
+            style={styles.input}
             placeholder="First name"
             onBlur={onBlur}
             onChangeText={onChange}
@@ -27,7 +28,7 @@ export default function Services() {
         )}
         name="firstName"
       />
-      {errors.firstName && <Text>This is required.</Text>}
+      {errors.firstName && <Text style={styles.errorText}>This is required.</Text>}
 
       <Controller
         control={control}
@@ -36,6 +37,7 @@ export default function Services() {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
+            style={styles.input}
             placeholder="Last name"
             onBlur={onBlur}
             onChangeText={onChange}
@@ -45,28 +47,46 @@ export default function Services() {
         name="lastName"
       />
 
-      <Button style = {styles.button}title="Submit" onPress={handleSubmit(onSubmit)} />
+      <Button
+        title="Submit"
+        onPress={handleSubmit(onSubmit)}
+        style={styles.button}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
-    button:{
-        marginTop: 20,
-        marginBottom: 20,
-        padding: 10,
-        backgroundColor: 'red',
-        borderRadius: 10,
-        width: 100,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        
-
-    }
-    
-  });
-  
-  
-
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  input: {
+    width: '100%',
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingLeft: 10,
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+  },
+  button: {
+    width: '100%',
+    height: 40,
+    backgroundColor: 'blue',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
